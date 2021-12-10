@@ -14,11 +14,35 @@ function App() {
   const [search, setSearch] = useState('');
 
   let [showAdd, setshowAdd] = useState(false)
+  let [totalQuantity, setTotalQuantity] = useState()
   const [edititemName, setEdititemName] = useState('')
   const [editDepartment, setEditDepartment] = useState('')
   const [editQuantity, setEditQuantity] = useState()
   const [id, setId] = useState('')
 
+
+  const totalQuantcalc = (values) => {
+   let sum = 0
+   // console.log('sum ' + sum)
+   for (let i = 0; i < values.length; i++) {
+     sum += values[i].quantity
+     // console.log('test ' + values[i].calories)
+     // console.log('hello')
+   }
+   // console.log('sum ' + sum)
+    setTotalQuantity(sum)
+  }
+
+  const getUserListings = () => {
+   const tempUserListings = []
+   for (const listing of objects) {
+     if (listing.includes(objects.id)) {
+       tempUserListings.push(listing)
+     }
+   }
+   console.log(tempUserListings)
+   totalQuantcalc(tempUserListings)
+  }
 
   useEffect(() => {
     axios
@@ -59,6 +83,7 @@ function App() {
   const handleNewitemName = (event) => {
       setitemName(event.target.value)
   }
+
 
   const deleteObject = (event) => {
       axios.delete('https://vp-inventory-manager.herokuapp.com/objects/' + event.target.value).then(() =>{
@@ -114,95 +139,100 @@ function App() {
   }
 
 
+
+
   return(
     <div>
-    <div class="title">
-          <h1 id="titlemain">Inventory Manager</h1>
-          <p class="description">List your department's inventory!</p>
-    </div>
-        <div className="createDiv">
-          <h2>List Inventory</h2>
-          <button className="addBtn" onClick={revealAdd}>Add</button>
-          {showAdd ?
-            <form onSubmit={createobject}>
-              <input onChange={handleNewitemName} type="text" placeholder="Item Name" /><br/>
-              <input onChange={handleNewdepartment} type="text" placeholder="Department" /><br/>
-              <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
-              <input type="submit" value="Create object" />
-            </form>
-                    :
-             <></>
-          }
-        </div>
-
-
-        <div className="search-container">
-          <input id="search" type="text" placeholder="Search..." onChange={(e) => {handleSearch(e.target.value)}}/>
-        </div>
-        <div className="search-section">
-          <ul>
-              {
-                  filtered
-                  .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
-                  .map(
-                      (object, index) => {
-                        console.log(object);
-                        console.log(index)
-                          return <li className="listmap" key={index}>
-
-                              <div className="datadiv">
-                                <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
-                              </div>
-
-                              <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
-                              <form id={object.id} onSubmit={updateObject}>
-                                  <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
-                                  <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
-                                  <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
-                                  <input type="submit"  value="Update object"/>
-                              </form>
-                          </li>
-                      }
-                  )
-              }
-          </ul>
-        </div>
-
-
-
-
-
-        <div className="objectsDiv">
-        <h2>Inventory Log</h2>
-        <ul>
-            {
-                objects
-                .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
-                .map(
-                    (object, index) => {
-                      console.log(object);
-                      console.log(index)
-                        return <li className="listmap" key={index}>
-
-                        <div className="datadiv">
-                              <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
-                            </div>
-
-                            <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
-
-                            <form id={object.id} onSubmit={updateObject}>
-                                <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
-                                <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
-                                <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
-                                <input type="submit"  value="Update object"/>
-                            </form>
-                        </li>
-                    }
-                )
-            }
-        </ul>
+      <div class="title">
+            <h1 id="titlemain">Inventory Manager</h1>
+            <p class="description">List your department's inventory!</p>
       </div>
+          <div className="createDiv">
+            <h2>List Inventory</h2>
+            <button className="addBtn" onClick={revealAdd}>Add</button>
+            {showAdd ?
+              <form onSubmit={createobject}>
+                <input onChange={handleNewitemName} type="text" placeholder="Item Name" /><br/>
+                <input onChange={handleNewdepartment} type="text" placeholder="Department" /><br/>
+                <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
+                <input type="submit" value="Create object" />
+              </form>
+                      :
+               <></>
+            }
+          </div>
 
+
+          <div className="search-container">
+            <input id="search" type="text" placeholder="Search..." onChange={(e) => {handleSearch(e.target.value)}}/>
+          </div>
+          <div className="search-section">
+              <ul>
+                  {
+                      filtered
+                      .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
+                      .map(
+                          (object, index) => {
+                            console.log(object);
+                            console.log(index)
+                              return <li className="listmap" key={index}>
+                                <div className="innerDiv">
+                                  <div className="datadiv">
+                                    <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
+                                  </div>
+
+                                  <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
+                                  <form id={object.id} onSubmit={updateObject}>
+                                      <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
+                                      <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
+                                      <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
+                                      <input type="submit"  value="Update object"/>
+                                  </form>
+                                </div>
+                              </li>
+                          }
+                      )
+                  }
+              </ul>
+          </div>
+
+
+
+
+
+          <div className="objectsDiv">
+          <h2>Inventory Log</h2>
+          <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5>
+            <ul>
+                {
+                    objects
+                    .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
+                    .map(
+                        (object, index) => {
+                          console.log(object);
+                          console.log(index)
+
+                            return <li className="listmap" key={index}>
+                              <div className="innerDiv">
+                                <div className="datadiv">
+                                    <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
+                                  </div>
+
+                                  <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
+
+                                  <form id={object.id} onSubmit={updateObject}>
+                                      <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
+                                      <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
+                                      <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
+                                      <input type="submit"  value="Update object"/>
+                                  </form>
+                              </div>
+                            </li>
+                        }
+                    )
+                }
+            </ul>
+        </div>
     </div>
   )
 }

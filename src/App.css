@@ -25,8 +25,9 @@ body{
      0 0 7px #EAE121,
      0 0 10px #EAE121,
      0 0 21px #EAE121,
-     0 0 42px #EAE121
-
+     0 0 42px #EAE121,
+     0 0 84px #EAE121,
+     0 0 126px #EAE121
 }
 
 .listmap{
@@ -36,6 +37,12 @@ body{
   border: 8px solid green;
   margin-bottom: 1vh;
   background-color: #54595C;
+}
+
+.innerDiv{
+  display: flex;
+  gap: 1vw;
+  padding: 7px;
 }
 
 .createDiv{
@@ -51,6 +58,7 @@ body{
   margin-left: 4vh;
   margin-top: 3vh;
   gap: 2vh;
+  overflow-y: scroll;
 }
 
 .search-container{
@@ -90,6 +98,8 @@ input{
 .deletebutton{
   background-color: #900C3F;
   color: white;
+  height: 30px;
+  margin-top: 20px
 }
 
 .description{
@@ -105,6 +115,7 @@ input{
   left: 3;
   bottom: 0;
   width: 100%;
+  background-color: #71797E;
 }
 
 .footer a{
