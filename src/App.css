@@ -1,0 +1,123 @@
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+margin: 0px;
+padding:0px;
+font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  color: white;
+  background-color: #71797E;
+}
+
+.title{
+  background-color: #54595C;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#titlemain{
+  font-weight: bold;
+  color: #fff;
+  font-size: 50px;
+  text-shadow:
+     0 0 7px #EAE121,
+     0 0 10px #EAE121,
+     0 0 21px #EAE121,
+     0 0 42px #EAE121
+
+}
+
+.listmap{
+  display: flex;
+  gap: 1vw;
+  list-style-type: none;
+  border: 8px solid green;
+  margin-bottom: 1vh;
+  background-color: #54595C;
+}
+
+.createDiv{
+  display: flex;
+  flex-direction: column;
+  margin-left: 45.7%;
+  margin-top: 1vh
+}
+
+.objectsDiv{
+  display: flex;
+  flex-direction: column;
+  margin-left: 4vh;
+  margin-top: 3vh;
+  gap: 2vh;
+}
+
+.search-container{
+  margin-left: 4vh;
+  margin-bottom: 1vh;
+  gap: 2vh;
+}
+
+.search-section{
+  display: flex;
+  flex-direction: column;
+  margin-left: 4vh;
+  margin-bottom: 2vh;
+  gap: 2vh;
+}
+
+.datadiv{
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+input{
+  background-color: #37393A;
+  color: white;
+}
+
+.addBtn{
+  background-color: #37393A;
+  color: white;
+  width: 99.3px;
+  margin-left: 28px;
+  margin-top: 3px;
+  margin-bottom: 8px
+}
+
+.deletebutton{
+  background-color: #900C3F;
+  color: white;
+}
+
+.description{
+ font-size: 10px;
+ margin-top: 4px;
+ margin-bottom: 8px;
+}
+
+.footer{
+  display: flex;
+  position: fixed;
+  gap: 3px;
+  left: 3;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a{
+  padding: 15px;
+  font-size: 60%;
+}
+
+.githubrepo img{
+  width: 28px;
+  height: 28px;
+}
+
+.linkedin img{
+  width: 28px;
+  height: 28px;
+}
