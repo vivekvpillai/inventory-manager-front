@@ -36,7 +36,8 @@ body{
   display: flex;
   gap: 1vw;
   list-style-type: none;
-  border: 8px solid green;
+  border: 8px solid #A26E09;
+  border-radius: 12px;
   margin-bottom: 1.7vh;
   margin-top: 1.7vh;
   background-color: #54595C;
@@ -93,39 +94,113 @@ body{
 }
 
 .topmargin{
-  height: 1.6vh
+  height: 1.05vh
 }
 
 .botmargin{
-  height: 2vh
+  height: 1.5vh
 }
 
 .datadiv{
   display: flex;
   flex-direction: column;
-  gap: 10px
+  gap: 10px;
+  margin-right: 20px
 }
 
 input{
   background-color: #37393A;
   color: white;
+  border-color: #37393A;
+  border-style: none;
+  padding: 5px;
+  margin: 2px
 }
 
 .addBtn{
-  background-color: #37393A;
-  color: white;
+
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  height: 25px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: color 1.5s;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 10px;
   width: 99.3px;
   margin-left: 28px;
-  margin-top: 3px;
+  margin-top: 6px;
   margin-bottom: 8px
 }
 
-.deletebutton{
-  background-color: #900C3F;
+.addBtn:hover,
+.addBtn:active {
+  font-size: 18px;
+  font-weight: bolder;
+  background-color: #71797E;
+  border: 1px solid #71797E;
   color: white;
-  height: 30px;
-  margin-top: 20px
+  text-shadow:
+     0 0 7px green,
+     0 0 21px green,
+     0 0 42px green,
+     0 0 84px green,
+     0 0 126px green,
+     0 0 371px green,
+     0 0 1000px green,
+     0 0 2000px green,
+     0 0 4000px green,
+     0 0 8000px green
 }
+
+.deletebutton{
+  background-color: #37393A;
+  border: 1px solid #37393A;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  height: 30px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: color 1.5s;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  width: 99.3px;
+}
+
+.deletebutton:hover,
+.deletebutton:focus {
+  background-color: #900C3F;
+  border: 1px solid #900C3F;
+}
+
 
 .description{
  font-size: 10px;
@@ -139,7 +214,7 @@ input{
   left: 3;
   bottom: 0;
   width: 100%;
-  background-color: #71797E;
+  background-color: #71797E
 }
 
 .footer a{

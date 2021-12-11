@@ -192,13 +192,15 @@ function App() {
                                       <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
                                     </div>
 
-                                    <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
+
                                     <form id={object.id} onSubmit={updateObject}>
-                                        <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
-                                        <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
-                                        <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
-                                        <input type="submit"  value="Update object"/>
+                                        <input onChange={handleNewitemName} type="text" placeholder="Item Name"/><br/>
+                                        <input onChange={handleNewdepartment} type="text" placeholder="Department"/><br/>
+                                        <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
+                                        <input type="submit"  value="Update"/>
                                     </form>
+
+                                    <button className="deletebutton" value={object.id} onClick={deleteObject}>Delete</button>
                                   </div>
                                 </li>
                             }
