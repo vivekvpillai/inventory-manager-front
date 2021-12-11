@@ -150,20 +150,22 @@ function App() {
             <h1 id="titlemain">Inventory Manager</h1>
             <p className="description">List your department's inventory!</p>
       </div>
-          <div className="createDiv">
-            <h2 className="toptitles">List Inventory</h2>
-            <button className="addBtn" onClick={revealAdd}>Add</button>
-            {showAdd ?
-              <form onSubmit={createobject}>
-                <input onChange={handleNewitemName} type="text" placeholder="Item Name" /><br/>
-                <input onChange={handleNewdepartment} type="text" placeholder="Department" /><br/>
-                <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
-                <input type="submit" className="createBtn" value="Create" onClick={totalQuantcalc}/>
-              </form>
-                      :
-               <></>
-            }
-          </div>
+          <div className="createContainer">
+            <div className="createDiv">
+              <h2 className="toptitles">List Inventory</h2>
+              <button className="addBtn" onClick={revealAdd}>Add</button>
+              {showAdd ?
+                <form onSubmit={createobject}>
+                  <input onChange={handleNewitemName} type="text" placeholder="Item Name" /><br/>
+                  <input onChange={handleNewdepartment} type="text" placeholder="Department" /><br/>
+                  <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
+                  <input type="submit" className="createBtn" value="Create" onClick={totalQuantcalc}/>
+                </form>
+                        :
+                 <></>
+              }
+            </div>
+          </div>  
 
           <div className="search-section">
               <div className = "Presearch">

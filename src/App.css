@@ -62,8 +62,12 @@ body{
 .createDiv{
   display: flex;
   flex-direction: column;
-  margin-left: 45vw;
   margin-top: 1vh
+}
+
+.createContainer{
+  display: flex;
+  justify-content: center;
 }
 
 .objectsDiv{
