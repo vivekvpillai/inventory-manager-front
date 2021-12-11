@@ -13,7 +13,7 @@ function App() {
 
   const [search, setSearch] = useState('');
 
-  let [showAdd, setshowAdd] = useState(false)
+  let [showAdd, setshowAdd] = useState(false);
   let [totalQuantity, setTotalQuantity] = useState()
   const [edititemName, setEdititemName] = useState('')
   const [editDepartment, setEditDepartment] = useState('')
@@ -114,20 +114,19 @@ function App() {
       })
   }
 
-  const updateButton = (objectData) => {
-   setEdititemName(objectData.itemName)
-   setEditDepartment(objectData.department)
-   setEditQuantity(objectData.quantity)
-   setId(objectData._id)
-  }
 
   const revealAdd = () => {
     showAdd ? setshowAdd(false) : setshowAdd(true)
   }
 
+  const handleNewFilter = (event) => {
+      setitemName(event.target.value)
+  }
+
+
   const handleSearch = (newSearch) => {
     setSearch(newSearch)
-    // console.log(newSearch);
+    console.log(newSearch)
     if (search !== '') {
       let filteredData = objects.filter((item) => {
         return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
@@ -143,9 +142,9 @@ function App() {
 
   return(
     <div>
-      <div class="title">
+      <div className="title">
             <h1 id="titlemain">Inventory Manager</h1>
-            <p class="description">List your department's inventory!</p>
+            <p className="description">List your department's inventory!</p>
       </div>
           <div className="createDiv">
             <h2>List Inventory</h2>
@@ -162,77 +161,54 @@ function App() {
             }
           </div>
 
-
-          <div className="search-container">
-            <input id="search" type="text" placeholder="Search..." onChange={(e) => {handleSearch(e.target.value)}}/>
-          </div>
           <div className="search-section">
-              <ul>
-                  {
-                      filtered
-                      .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
-                      .map(
-                          (object, index) => {
-                            console.log(object);
-                            console.log(index)
-                              return <li className="listmap" key={index}>
-                                <div className="innerDiv">
-                                  <div className="datadiv">
-                                    <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
-                                  </div>
-
-                                  <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
-                                  <form id={object.id} onSubmit={updateObject}>
-                                      <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
-                                      <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
-                                      <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
-                                      <input type="submit"  value="Update object"/>
-                                  </form>
-                                </div>
-                              </li>
+              <div className = "Presearch">
+                <h2>Inventory Log</h2>
+                <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5>
+                <div className="search-container">
+                  <input id="search" type="text" placeholder="Search..." onChange={(event) => {setSearch(event.target.value)}}/>
+              </div>
+            </div>
+              <div className="ul">
+                <ul>
+                  <div className="topmargin">
+                  </div>
+                    {
+                        objects
+                        .filter((item)=> {
+                          if (search == "") {
+                            return item
+                          } else if (Object.values(item).join('').toLowerCase().includes(search.toLowerCase())) {
+                            return item
                           }
-                      )
-                  }
-              </ul>
-          </div>
+                        })
+                        .map(
+                            (object, index) => {
+                              console.log(object);
+                              console.log(index)
+                                return <li className="listmap" key={index}>
+                                  <div className="innerDiv">
+                                    <div className="datadiv">
+                                      <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
+                                    </div>
 
-
-
-
-
-          <div className="objectsDiv">
-          <h2>Inventory Log</h2>
-          <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5>
-            <ul>
-                {
-                    objects
-                    .sort(({ id: previousID }, { id: currentID }) => previousID - currentID)
-                    .map(
-                        (object, index) => {
-                          console.log(object);
-                          console.log(index)
-
-                            return <li className="listmap" key={index}>
-                              <div className="innerDiv">
-                                <div className="datadiv">
-                                    <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
+                                    <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
+                                    <form id={object.id} onSubmit={updateObject}>
+                                        <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
+                                        <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
+                                        <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
+                                        <input type="submit"  value="Update object"/>
+                                    </form>
                                   </div>
-
-                                  <button className="deletebutton" value={object.id} onClick={deleteObject}>DELETE</button>
-
-                                  <form id={object.id} onSubmit={updateObject}>
-                                      <input onChange={handleNewitemName} type="text" placeholder="itemName"/><br/>
-                                      <input onChange={handleNewdepartment} type="text" placeholder="department"/><br/>
-                                      <input onChange={handleNewquantity} type="number" placeholder="quantity" /><br/>
-                                      <input type="submit"  value="Update object"/>
-                                  </form>
-                              </div>
-                            </li>
-                        }
-                    )
-                }
-            </ul>
-        </div>
+                                </li>
+                            }
+                        )
+                    }
+                  <div className="botmargin">
+                  </div>
+                </ul>
+            </div>
+          </div>
     </div>
   )
 }
