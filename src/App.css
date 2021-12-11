@@ -113,12 +113,11 @@ input{
   color: white;
   border-color: #37393A;
   border-style: none;
-  padding: 5px;
+  padding: 3.5px;
   margin: 2px
 }
 
 .addBtn{
-
   background-color: green;
   border: 1px solid green;
   border-radius: 8px;
@@ -162,9 +161,38 @@ input{
      0 0 126px green,
      0 0 371px green,
      0 0 1000px green,
-     0 0 2000px green,
-     0 0 4000px green,
-     0 0 8000px green
+     0 0 2000px #54595C,
+     0 0 4000px #54595C,
+     0 0 8000px #54595C,
+     0 0 16000px #54595C,
+     0 0 32000px #54595C,
+     0 0 64000px #54595C,
+     0 0 128000px #54595C,
+     0 0 500000px #54595C
+}
+
+.updateBtn{
+  background-color: #37393A;
+  border: 1px solid #37393A;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 10px;
+  margin: 0;
+  text-decoration: none;
+  transition-duration: color 1.5s;
+  margin-right: 10px;
+  width: 70px;
+  margin-left: 32px;
+  margin-top: 2px;
+  margin-bottom: 8px
+}
+
+.updateBtn:hover {
+  background-color: #CFC950;
+  border: 1px solid #CFC950
 }
 
 .deletebutton{

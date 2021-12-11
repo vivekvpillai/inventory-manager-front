@@ -195,9 +195,9 @@ function App() {
 
                                     <form id={object.id} onSubmit={updateObject}>
                                         <input onChange={handleNewitemName} type="text" placeholder="Item Name"/><br/>
-                                        <input onChange={handleNewdepartment} type="text" placeholder="Department"/><br/>
-                                        <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
-                                        <input type="submit"  value="Update"/>
+                                        <input onChange={handleNewdepartment} type="text"  placeholder="Department"/><br/>
+                                        <input onChange={handleNewquantity} type="number"  placeholder="Quantity" /><br/>
+                                        <input className="updateBtn" type="submit"  value="Update"/>
                                     </form>
 
                                     <button className="deletebutton" value={object.id} onClick={deleteObject}>Delete</button>
