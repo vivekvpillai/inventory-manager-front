@@ -14,7 +14,7 @@ function App() {
   const [search, setSearch] = useState('');
 
   let [showAdd, setshowAdd] = useState(false);
-  let [totalQuantity, setTotalQuantity] = useState()
+  let [totalQuantity, setTotalQuantity] = useState(0)
   const [edititemName, setEdititemName] = useState('')
   const [editDepartment, setEditDepartment] = useState('')
   const [editQuantity, setEditQuantity] = useState()
@@ -22,33 +22,34 @@ function App() {
 
 
   const totalQuantcalc = (values) => {
-   let sum = 0
    // console.log('sum ' + sum)
-   for (let i = 0; i < values.length; i++) {
-     sum += values[i].quantity
-     // console.log('test ' + values[i].calories)
+   setTotalQuantity(totalQuantity = 0)
+   console.log(totalQuantity + 'before')
+   for (let i = 0; i < objects.length; i++) {
+     console.log(objects)
+     console.log(objects.length)
+     console.log(objects[i])
+     console.log('hello')
+    setTotalQuantity(totalQuantity += objects[i].quantity)
+    console.log(totalQuantity)
      // console.log('hello')
    }
-   // console.log('sum ' + sum)
-    setTotalQuantity(sum)
+   document.location.reload(true)
   }
 
-  const getUserListings = () => {
-   const tempUserListings = []
-   for (const listing of objects) {
-     if (listing.includes(objects.id)) {
-       tempUserListings.push(listing)
-     }
-   }
-   console.log(tempUserListings)
-   totalQuantcalc(tempUserListings)
-  }
 
   useEffect(() => {
     axios
       .get('https://vp-inventory-manager.herokuapp.com/objects').then((response)=>{
-        console.log(response.data);
-        setObjects(response.data)
+        setObjects(response.data);
+        setTotalQuantity(totalQuantity = 0)
+        for (let i = 0; i < response.data.length; i++) {
+          // console.log(response.data.length)
+          // console.log(response.data[i])
+          // console.log('hello')
+         setTotalQuantity(totalQuantity += response.data[i].quantity)
+         // console.log(totalQuantity)
+        }
       })
   }, [])
 
@@ -70,6 +71,7 @@ function App() {
               setObjects(response.data)
             })
       })
+      totalQuantcalc()
   }
 
   const handleNewquantity = (event) => {
@@ -93,6 +95,7 @@ function App() {
             setObjects(response.data)
         })
       })
+      totalQuantcalc()
   }
 
   const updateObject = (event) => {
@@ -112,6 +115,7 @@ function App() {
               setObjects(response.data)
             })
       })
+      totalQuantcalc()
   }
 
 
@@ -147,14 +151,14 @@ function App() {
             <p className="description">List your department's inventory!</p>
       </div>
           <div className="createDiv">
-            <h2>List Inventory</h2>
+            <h2 className="toptitles">List Inventory</h2>
             <button className="addBtn" onClick={revealAdd}>Add</button>
             {showAdd ?
               <form onSubmit={createobject}>
                 <input onChange={handleNewitemName} type="text" placeholder="Item Name" /><br/>
                 <input onChange={handleNewdepartment} type="text" placeholder="Department" /><br/>
                 <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
-                <input type="submit" value="Create object" />
+                <input type="submit" className="createBtn" value="Create" onClick={totalQuantcalc}/>
               </form>
                       :
                <></>
@@ -163,7 +167,7 @@ function App() {
 
           <div className="search-section">
               <div className = "Presearch">
-                <h2>Inventory Log</h2>
+                <h2 className="toptitles">Inventory Log</h2>
                 <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5>
                 <div className="search-container">
                   <input id="search" type="text" placeholder="Search..." onChange={(event) => {setSearch(event.target.value)}}/>
@@ -184,12 +188,11 @@ function App() {
                         })
                         .map(
                             (object, index) => {
-                              console.log(object);
-                              console.log(index)
+
                                 return <li className="listmap" key={index}>
                                   <div className="innerDiv">
                                     <div className="datadiv">
-                                      <div>Item Name: {object.itemName}</div> <div>Department: {object.department}</div> <div>Quantity: {object.quantity}</div>
+                                      <div className="itemName"><h2>{object.itemName}</h2></div> <div><p className="dept">{object.department}</p></div> <div><p className="qty">Quantity: {object.quantity}</p></div>
                                     </div>
 
 
@@ -197,7 +200,7 @@ function App() {
                                         <input onChange={handleNewitemName} type="text" placeholder="Item Name"/><br/>
                                         <input onChange={handleNewdepartment} type="text"  placeholder="Department"/><br/>
                                         <input onChange={handleNewquantity} type="number"  placeholder="Quantity" /><br/>
-                                        <input className="updateBtn" type="submit"  value="Update"/>
+                                        <input className="updateBtn" type="submit" value="Update" onClick={totalQuantcalc}/>
                                     </form>
 
                                     <button className="deletebutton" value={object.id} onClick={deleteObject}>Delete</button>
