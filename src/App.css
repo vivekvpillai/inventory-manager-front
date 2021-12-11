@@ -1,5 +1,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 
 *{
 margin: 0px;
@@ -32,6 +34,12 @@ body{
      0 0 126px #EAE121
 }
 
+.toptitles{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 27px;
+  font-weight: bolder;
+}
+
 .listmap{
   display: flex;
   gap: 1vw;
@@ -54,7 +62,7 @@ body{
 .createDiv{
   display: flex;
   flex-direction: column;
-  margin-left: 45.7%;
+  margin-left: 45vw;
   margin-top: 1vh
 }
 
@@ -108,13 +116,27 @@ body{
   margin-right: 20px
 }
 
+.itemName{
+  font-weight: bold;
+  font-size: 16px
+}
+
+.dept{
+  font-size: 15px;
+}
+
+.qty{
+  font-size: 11px
+}
+
 input{
   background-color: #37393A;
   color: white;
   border-color: #37393A;
   border-style: none;
   padding: 3.5px;
-  margin: 2px
+  margin: 2px;
+  width: 180px
 }
 
 .addBtn{
@@ -134,14 +156,13 @@ input{
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition-duration: color 1.5s;
   vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-right: 10px;
   width: 99.3px;
-  margin-left: 28px;
+  margin-left: 46px;
   margin-top: 6px;
   margin-bottom: 8px
 }
@@ -171,6 +192,40 @@ input{
      0 0 500000px #54595C
 }
 
+.createBtn{
+  background-color: #37393A;
+  border: 1px solid #37393A;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 10px;
+  height: 25px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: color 1.5s;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 10px;
+  width: 70px;
+  margin-left: 59px;
+  margin-top: 2px;
+  margin-bottom: 8px
+}
+
+.createBtn:hover {
+  background-color: green;
+  border: 1px solid green
+}
+
 .updateBtn{
   background-color: #37393A;
   border: 1px solid #37393A;
@@ -185,7 +240,7 @@ input{
   transition-duration: color 1.5s;
   margin-right: 10px;
   width: 70px;
-  margin-left: 32px;
+  margin-left: 51px;
   margin-top: 2px;
   margin-bottom: 8px
 }
