@@ -15,6 +15,7 @@ function App() {
 
   let [showAdd, setshowAdd] = useState(false);
   let [totalQuantity, setTotalQuantity] = useState(0)
+  let [totalSum, setTotalSum] = useState(0)
   const [edititemName, setEdititemName] = useState('')
   const [editDepartment, setEditDepartment] = useState('')
   const [editQuantity, setEditQuantity] = useState()
@@ -24,6 +25,7 @@ function App() {
   const totalQuantcalc = (values) => {
    // console.log('sum ' + sum)
    setTotalQuantity(totalQuantity = 0)
+   setTotalSum(totalSum = 0)
    console.log(totalQuantity + 'before')
    for (let i = 0; i < objects.length; i++) {
      console.log(objects)
@@ -31,10 +33,11 @@ function App() {
      console.log(objects[i])
      console.log('hello')
     setTotalQuantity(totalQuantity += objects[i].quantity)
+    setTotalSum(totalSum = totalQuantity)
     console.log(totalQuantity)
      // console.log('hello')
    }
-   document.location.reload(true)
+
   }
 
 
@@ -161,16 +164,25 @@ function App() {
                   <input onChange={handleNewquantity} type="number" placeholder="Quantity" /><br/>
                   <input type="submit" className="createBtn" value="Create" onClick={totalQuantcalc}/>
                 </form>
+
                         :
                  <></>
               }
             </div>
-          </div>  
+          </div>
 
           <div className="search-section">
               <div className = "Presearch">
                 <h2 className="toptitles">Inventory Log</h2>
-                <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5>
+                {/* <h5 className="totalQuantity"> Total Quantity: {totalQuantity} </h5> */}
+
+                  <div className="samples"> <h4 className="totalQuantity">Items</h4>&nbsp;|&nbsp;
+                  {objects.map(
+                      (object) => {
+                    return <div>
+                              <p>{object.itemName} |&nbsp;</p>
+                            </div>} )}
+                  </div>
                 <div className="search-container">
                   <input id="search" type="text" placeholder="Search..." onChange={(event) => {setSearch(event.target.value)}}/>
               </div>
@@ -196,16 +208,19 @@ function App() {
                                     <div className="datadiv">
                                       <div className="itemName"><h2>{object.itemName}</h2></div> <div><p className="dept">{object.department}</p></div> <div><p className="qty">Quantity: {object.quantity}</p></div>
                                     </div>
-
-
-                                    <form id={object.id} onSubmit={updateObject}>
-                                        <input onChange={handleNewitemName} type="text" placeholder="Item Name"/><br/>
-                                        <input onChange={handleNewdepartment} type="text"  placeholder="Department"/><br/>
-                                        <input onChange={handleNewquantity} type="number"  placeholder="Quantity" /><br/>
-                                        <input className="updateBtn" type="submit" value="Update" onClick={totalQuantcalc}/>
-                                    </form>
-
-                                    <button className="deletebutton" value={object.id} onClick={deleteObject}>Delete</button>
+                                    <div class="updateanddelete">
+                                      <div className="updateform">
+                                        <form id={object.id} onSubmit={updateObject}>
+                                            <input class="updateInputs" onChange={handleNewitemName} type="text" placeholder="Item Name"/><br/>
+                                            <input class="updateInputs" onChange={handleNewdepartment} type="text"  placeholder="Department"/><br/>
+                                            <input class="updateInputs" onChange={handleNewquantity} type="number"  placeholder="Quantity" /><br/>
+                                            <input className="updateBtn" type="submit" value="Update" onClick={totalQuantcalc}/>
+                                        </form>
+                                      </div>
+                                      <div className="deleteform">
+                                        <button className="deletebutton" value={object.id} onClick={deleteObject}>Delete</button>
+                                      </div>
+                                    </div>
                                   </div>
                                 </li>
                             }
