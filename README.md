@@ -1,70 +1,18 @@
-# Getting Started with Create React App
+#Final-Project-GA: Usage Insights
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This was my first attempt at using Java Spring Boot. I connected the Java Spring Boot backend to the React frontend.
 
-## Available Scripts
+##User Stories
 
-In the project directory, you can run:
+The users will be able to add data from consumer usage, and edit/delete the data, into the public page. This is through the React frontend, communicating to the backend CRUD Java Spring/Boot backend.
+The data will collect below the data listing bar. This will be used in a single page React application.
+MVP: User Stories + Portfolio Quality Styling.
 
-### `npm start`
+##Future Goals
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The usage statistics will implement chart.js graphs for consumer usage for the days, using timestamps. The logged in users can add data connected to their username. If mounts of visits for a data listing below are less than 1000, the border for the data listing will be red, and if not, the border will be green. Link usage to a website, such as a previous project, for real-time data.
+Implement redux/Regex.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##Takeaways
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I learned and implemented the basics of Java in this project. I was able to understand the concept of Java beans, Java Spring Boot, and how objected oriented programming is applied in Java. I was able to debug many issues when starting my Java Spring Boot application, which was causing my initial maven boot to fail at first, and solving them helped me better understand how Java Spring Boot worked. I was able to move past issues in debugging the React frontend causing my data to not list, such as sneaky camelCase discrepancy issues with my variables, which of course was a long journey (on camel top), but I was able to solve these issues and allow my data to populate. This project was a fun way to get introduced to Java Spring Boot!
