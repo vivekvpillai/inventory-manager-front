@@ -16,3 +16,6 @@ Implement redux/Regex.
 #Takeaways
 
 I learned and implemented the basics of Java in this project. I was able to understand the concept of Java beans, Java Spring Boot, and how objected oriented programming is applied in Java. I was able to debug many issues when starting my Java Spring Boot application, which was causing my initial maven boot to fail at first, and solving them helped me better understand how Java Spring Boot worked. I was able to move past issues in debugging the React frontend causing my data to not list, such as sneaky camelCase discrepancy issues with my variables, which of course was a long journey (on camel top), but I was able to solve these issues and allow my data to populate. This project was a fun way to get introduced to Java Spring Boot!
+
+
+Back-End Link: https://github.com/vivekvpillai/Insights-Pool/tree/master
